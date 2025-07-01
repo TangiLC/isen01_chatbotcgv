@@ -89,9 +89,13 @@ chatbot-cgv/
 ├── .env                    # Fichier de configuration des clés
 ├── /train/
 │   ├── addfile.py          # Script pour upload du fichier JSONL
-│   └── finetuning.py       # Script de création du modèle fine-tuné
+│   └── train.jsonl         # Fichier jsonl de fine-tuning
 ├── /data/                  # Contient le docker-compose.yml pour SQLite
-├── requirements.txt
+│   └── schema.sql          # Fichier sql de création de la BDD
+├── finetuning.py           # Script de création du modèle fine-tuné
+├── requirements.txt        # Liste des packages nécessaires
+├── cgv.md                  # Conditions générales de ventes
+├── organigramme.png        # Schéma de l'alogorithme
 └── README.md
 ```
 
