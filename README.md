@@ -54,6 +54,7 @@ Créer un fichier `.env` à la racine du projet :
 
 ```env
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+OPENAI_MODEL=gpt-4.1-nano-2025-04-14
 OPENAI_FILE_ID=file-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
@@ -90,8 +91,10 @@ chatbot-cgv/
 ├── /train/
 │   ├── addfile.py          # Script pour upload du fichier JSONL
 │   └── train.jsonl         # Fichier jsonl de fine-tuning
-├── /data/                  # Contient le docker-compose.yml pour SQLite
-│   └── schema.sql          # Fichier sql de création de la BDD
+├── /data/                  
+│   ├── diag.png            # Schéma de la BDD
+│   ├── docker-compose.yml  # fichier compose pour conteneuriser SQLite
+│   └── script.sql          # Fichier sql de création de la BDD
 ├── finetuning.py           # Script de création du modèle fine-tuné
 ├── requirements.txt        # Liste des packages nécessaires
 ├── cgv.md                  # Conditions générales de ventes
@@ -161,9 +164,19 @@ Puis accédez à Adminer via [http://localhost:8080](http://localhost:8080) pour
 
 ## 🎓 Équipe pédagogique
 
-- Travail réalisé en binôme
+- Travail réalisé en binôme (<a href="https://github.com/go2375" target="_blank">
+  <img src="https://avatars.githubusercontent.com/go2375" width="40" height="40" style="border-radius: 50%;" alt="Gosia" />
+</a>)
 - Encadré dans le cadre du module *Fine-tuning GPT et prototypage IA*
 - Formation ISEN - Simplon.co – 2025
+- PS: les clés API OpenAPI initiales ont été révoquées, de nouvelles clés doivent être ajoutées au fichier .env
+
+## TO DO
+
+- Création de fichier jsonl de fine tuning plus conséquent
+- Reprise des commentaires des fonctions au format docstring
+- factorisation et sécurisation, notamment bdd=mysql.connect()
+- optimisation des exceptions, retry en cas d'echec etc...
 
 ---
 
