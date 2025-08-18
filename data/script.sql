@@ -24,3 +24,7 @@ CREATE TABLE echanges (
     FOREIGN KEY (conversation) REFERENCES conversations(id_conversation),
     FOREIGN KEY (statut) REFERENCES statuts(id_statut)
 );
+
+-- Population de la table statuts
+INSERT INTO statuts (id_statut, label) VALUES (1, 'succès');
+INSERT INTO statuts (id_statut, label) VALUES (2, 'echec');
