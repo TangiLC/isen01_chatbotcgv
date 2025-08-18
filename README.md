@@ -56,6 +56,7 @@ Créer un fichier `.env` à la racine du projet :
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 OPENAI_MODEL=gpt-4.1-nano-2025-04-14
 OPENAI_FILE_ID=file-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 ```
 
 Ces clés sont nécessaires pour utiliser le modèle fine-tuné via l’API OpenAI.
@@ -98,7 +99,7 @@ chatbot-cgv/
 ├── finetuning.py           # Script de création du modèle fine-tuné
 ├── requirements.txt        # Liste des packages nécessaires
 ├── cgv.md                  # Conditions générales de ventes
-├── organigramme.png        # Schéma de l'alogorithme
+├── organigramme.png        # Schéma de l'algorithme
 └── README.md
 ```
 
@@ -167,7 +168,7 @@ Puis accédez à Adminer via [http://localhost:8080](http://localhost:8080) pour
 - Travail réalisé en binôme (<a href="https://github.com/go2375" target="_blank">
   <img src="https://avatars.githubusercontent.com/go2375" width="40" height="40" style="border-radius: 50%;" alt="Gosia" />
 </a>)
-- Encadré dans le cadre du module *Fine-tuning GPT et prototypage IA*
+- Développement encadré pour du module *Fine-tuning GPT et prototypage IA* Prairie 01
 - Formation ISEN - Simplon.co – 2025
 - PS: les clés API OpenAPI initiales ont été révoquées, de nouvelles clés doivent être ajoutées au fichier .env
 
