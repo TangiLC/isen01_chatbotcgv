@@ -107,10 +107,7 @@ def stockage_log(conv_id,now, prompt, response, statut):
 ################### Proposition d'une nouvelle question #######################
 def nouvelle_question():
   new = input("Souhaitez-vous poser une autre question (O/N) ? ")
-  if new.lower() == "o":
-    return True
-  else:
-    return False
+  return new.lower() == "o"
   
 ################### MAIN ######################################################
 def main():
