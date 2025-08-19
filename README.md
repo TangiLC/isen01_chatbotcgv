@@ -58,6 +58,11 @@ OPENAI_MODEL=gpt-4.1-nano-2025-04-14
 OPENAI_FILE_ID=file-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ```
+un template existe `env.template`, il peut être copié et renommé en .env avec la commande :
+
+```bash
+cp env.template .env
+```
 
 Ces clés sont nécessaires pour utiliser le modèle fine-tuné via l’API OpenAI.
 
@@ -160,6 +165,8 @@ docker-compose up -d
 ```
 
 Puis accédez à Adminer via [http://localhost:8080](http://localhost:8080) pour visualiser les logs des interactions.
+Le fichier `script.sql` permet de créer et peupler initialement la base SQLite Logs.
+![Schema_bdd](data/diag.drawio.png)
 
 ---
 
@@ -171,6 +178,10 @@ Puis accédez à Adminer via [http://localhost:8080](http://localhost:8080) pour
 - Développement encadré pour du module *Fine-tuning GPT et prototypage IA* Prairie 01
 - Formation ISEN - Simplon.co – 2025
 - PS: les clés API OpenAPI initiales ont été révoquées, de nouvelles clés doivent être ajoutées au fichier .env
+
+## License
+Ce projet est sous licence [MIT](LICENSE).  
+Vous êtes libre de l’utiliser, le modifier et le distribuer sous les conditions définies dans le fichier de licence.
 
 ## TO DO
 
