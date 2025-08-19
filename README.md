@@ -110,49 +110,47 @@ chatbot-cgv/
 
 # Diagramme de fonctionnement - chatbot.py
 
+Ce diagramme est l'algorithme optimal visé, actuellement (PoC) les séquences de vérification en BDD et de gestion
+d'erreur sont ignorées (*), l'ensemble des Question/Réponse est toujours stocké en BDD même en cas de doublon ou d'erreur.
+
 ```
-                      ┌────────────┐
-                      │   Début    │
-                      └────┬───────┘
-                    ┌──────▼───────┐
-                    │ Saisie       │
-                    │ utilisateur  │
-                    └──────┬───────┘
-          ┌────────────────▼────────────────┐
-          │ La question existe-t-elle       │
-          │ déjà en BDD (SQLite) ?          │
-          └──────┬───────────────┬──────────┘
-               [oui]           [non]
-        ┌────────▼─────┐   ┌─────▼───────────┐
-        │ Affichage de │   │ Envoi requête   │
-        │ la réponse   │   │ à l’API OpenAI  │
-        └────────┬─────┘   └─────┬───────────┘
-            ┌────▼──────┐     ┌──▼───────────┐
-            │ Autre     │     │ Attente de   │
-            │ question ?│     │ la réponse   │
-            └────┬──────┘     └──┬───────────┘
-               [oui]             │
-                 │        ┌──────▼───────┐
-                 │        │ Réponse de   │
-                 │        │ l’API valide?│
-                 │        └────┬─────────┘
-                 │           [oui]
-                 │   ┌─────────▼────────────┐
-                 │   │ Stockage Q/R dans la │
-                 │   │ base de données      │
-                 │   └────────┬─────────────┘
-                 │     ┌──────▼─────┐
-                 │     │ Affichage  │
-                 │     │ réponse    │
-                 │     └───────┬────┘
-                 │       ┌─────▼─────┐
-                 │       │ Autre     │
-                 ─[oui]─ │ question ?│
-                 │       └────┬──────┘
-                 │          [non]
-           ┌─────▼────┐  ┌────▼─────┐
-           │  Retour  │  │   Fin    │
-           └──────────┘  └──────────┘
+┌────────────┐
+│   Début    │      ┌──────────────┐
+└────────────┴─────►│   Saisie     │
+       ┌───────────►│ utilisateur  │
+       │            └──────┬───────┘
+       │   ┌───────────────▼─────────────┐
+       │   │ La question existe-t-elle   │
+       │   │ déjà en BDD (SQLite) ? *    │
+       │   └─────┬─────────────┬─────────┘
+       │       [oui*]        [non]
+       │         │        ┌────▼────────────┐
+       │         │        │ Envoi requête   │
+       │         │        │ à l'API OpenAI  │
+       │         │        └─────┬───────────┘
+       │         │           ┌──▼───────────┐
+       │         │           │ Attente de   │
+       │         │           │ la réponse   │
+       │         │           └──┬───────────┘
+       │         │        ┌─────▼───────────┐
+       │         │        │ Réponse de   *  │
+       │         │        │ l'API valide?   ├─[non*]
+       │         │        └────┬────────────┘   │
+       │         │           [oui]              │
+       │         │   ┌─────────▼────────────┐   │
+       │         │   │ Stockage Q/R dans la │   │
+       │         │   │ base de données      │   │
+    [oui]        │   └─────────┬────────────┘   │
+       │         └────────────►┤                │
+      ┌┴──────────┐        ┌───▼────────┐       │
+      │ Autre     │        │ Affichage  │◄──────┘
+      │ question ?│◄───────┤ réponse *  │
+      └────┬──────┘        └────────────┘
+        [non]                              
+      ┌────▼─────┐            
+      │   Fin    │  
+      └──────────┘                  
+  
 ```
 
 
@@ -187,6 +185,7 @@ Vous êtes libre de l’utiliser, le modifier et le distribuer sous les conditio
 
 - Création de fichier jsonl de fine tuning plus conséquent
 - Reprise des commentaires des fonctions au format docstring
+- Gestion des doublons BDD et erreurs API
 - factorisation et sécurisation, notamment bdd=mysql.connect()
 - optimisation des exceptions, retry en cas d'echec etc...
 
