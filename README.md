@@ -168,6 +168,15 @@ Le fichier `script.sql` permet de créer et peupler initialement la base SQLite 
 
 ---
 
+## 🛡️ RGPD <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">[CNIL]</a>
+
+Dans la version PoC actuelle, des données sensibles utilisateurs entrées en prompt sont stockées en clair dans la BDD, sans consentement ni durée limitée. Avant la mise en production, des règles devront être suivies pour être en accord avec le RGPD :
+- information utilisateur et demande de consentement
+- stockage limité, chiffré, anonymisé...
+- droit d'accès utilisateur, modification, suppression
+- accès sécurisé à la BDD
+- ... (le pré-traitement des prompts pourrait prendre en charge ces règles)
+
 ## 🎓 Projet pédagogique
 
 - Travail réalisé en binôme (<a href="https://github.com/go2375" target="_blank">
@@ -184,11 +193,13 @@ Vous êtes libre de l’utiliser, le modifier et le distribuer sous les conditio
 ## TO DO
 
 - Création de fichier jsonl de fine tuning plus conséquent
+- Conformité RGPD
 - Reprise des commentaires des fonctions au format docstring
 - nettoyage de la saisie utilisateur, prétraitement
 - Gestion des doublons BDD et erreurs API
 - factorisation et sécurisation, notamment bdd=mysql.connect()
 - optimisation des exceptions, retry en cas d'echec etc...
+- Front-end et annexes
 
 ---
 
