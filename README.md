@@ -185,6 +185,7 @@ Vous êtes libre de l’utiliser, le modifier et le distribuer sous les conditio
 
 - Création de fichier jsonl de fine tuning plus conséquent
 - Reprise des commentaires des fonctions au format docstring
+- nettoyage de la saisie utilisateur, prétraitement
 - Gestion des doublons BDD et erreurs API
 - factorisation et sécurisation, notamment bdd=mysql.connect()
 - optimisation des exceptions, retry en cas d'echec etc...
