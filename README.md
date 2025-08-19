@@ -56,6 +56,11 @@ Créer un fichier `.env` à la racine du projet :
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 OPENAI_MODEL=gpt-4.1-nano-2025-04-14
 OPENAI_FILE_ID=file-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+BDD_USER=username
+BDD_PASSWORD=password
+BDD_NAME=base_name(ex:Logs)
+BDD_HOST=host_ip(ex:localhost)
+BDD_PORT=sql_port(ex:3306)
 
 ```
 un template existe `env.template`, il peut être copié et renommé en .env avec la commande :

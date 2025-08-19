@@ -8,6 +8,9 @@ import os
 load_dotenv()
 BDD_USER = os.getenv("BDD_USER")
 BDD_PASSWORD = os.getenv("BDD_PASSWORD")
+BDD_NAME = os.getenv("BDD_NAME")
+BDD_HOST = os.getenv("BDD_HOST")
+BDD_PORT = os.getenv("BDD_PORT")
 client = OpenAI()
 
 
@@ -24,11 +27,11 @@ def create_conversation():
 
     try:
         bdd = mysql.connect(
-            host="localhost",
+            host=BDD_HOST,
             user=BDD_USER,
             password=BDD_PASSWORD,
-            database="Logs",
-            port=3306,
+            database=BDD_NAME,
+            port=BDD_PORT,
         )
         cursor = bdd.cursor()
 
@@ -83,11 +86,11 @@ def is_already_in_BDD(prompt):
 def stockage_log(conv_id, now, prompt, response, statut):
     try:
         bdd = mysql.connect(
-            host="localhost",
+            host=BDD_HOST,
             user=BDD_USER,
             password=BDD_PASSWORD,
-            database="Logs",
-            port=3306,
+            database=BDD_NAME,
+            port=BDD_PORT,
         )
         cursor = bdd.cursor()
 
