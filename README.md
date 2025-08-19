@@ -168,7 +168,7 @@ Le fichier `script.sql` permet de créer et peupler initialement la base SQLite 
 
 ---
 
-## 🎓 Équipe pédagogique
+## 🎓 Projet pédagogique
 
 - Travail réalisé en binôme (<a href="https://github.com/go2375" target="_blank">
   <img src="https://avatars.githubusercontent.com/go2375" width="40" height="40" style="border-radius: 50%;" alt="Gosia" />
