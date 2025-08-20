@@ -1,6 +1,22 @@
 # Chatbot CGV – PoC Python
 
-## 🧾 Présentation
+## 📚 Table des matières
+- [Présentation](#présentation)
+- [Prérequis](#prérequis)
+- [Fonctionnalités](#fonctionnalités)
+- [Stack technique](#stack-technique)
+- [Installation et préparation](#installation-et-préparation)
+- [Lancement de l'application](#lancement-de-lapplication)
+- [Fine-tuning](#fine-tuning-optionnel-si-vous-ne-disposez-pas-encore-dun-modèle)
+- [Structure du projet](#structure-du-projet)
+- [Diagramme de fonctionnement](#diagramme-de-fonctionnement)
+- [Base de données](#base-de-données)
+- [RGPD](#rgpd)
+- [Projet pédagogique](#projet-pédagogique)
+- [Licence](#license)
+- [To Do](#to-do)
+
+## Présentation
 
 Ce projet est un **Proof of Concept (POC)** académique développé dans le cadre de la formation *Développeur IA* à l'**ISEN/Simplon**. Il s’agit d’un **chatbot terminal** capable de répondre automatiquement aux questions liées aux **Conditions Générales de Vente (CGV)** d'une entreprise e-commerce fictive (*MonEshop*), en s'appuyant sur un modèle OpenAI **fine-tuné** à partir d’un fichier JSONL d’entraînement.
 
@@ -8,14 +24,22 @@ Ce projet est un **Proof of Concept (POC)** académique développé dans le cadr
 - **Objectif** : Simuler un assistant interne répondant aux questions sur les CGV (paiement, rétractation, livraison, garantie, données personnelles)
 - **Livrable** : MVP fonctionnant en **ligne de commande** (sans interface graphique)
 
-## 🛠️ Fonctionnalités
+## Prérequis
+
+- **Python ≥ 3.12**  
+- **Git** 
+- **Docker & Docker Compose**  
+- **VSCode (ou équivalent IDE)**   
+- **Clé API OpenAI** 
+
+## Fonctionnalités
 
 - Chargement d’un pré-prompt métier.
 - Utilisation d’un modèle fine-tuné via l’API OpenAI.
 - Interaction utilisateur en console (prompt/réponse).
 - Enregistrement des échanges dans une base SQLite (via Docker).
 
-## 🧑‍💻 Stack technique
+## Stack technique
 
 - **Python ≥ 3.12**
 - **Ubuntu 24.04 (via WSL2 recommandé)**
@@ -24,7 +48,7 @@ Ce projet est un **Proof of Concept (POC)** académique développé dans le cadr
 - **VSCode** (avec environnement virtuel Python)
 - **Fichier d’entraînement JSONL** pour affiner le modèle GPT
 
-## ⚙️ Installation et préparation
+## Installation et préparation
 
 ### 1. Fork et clonage du projet
 
@@ -71,7 +95,7 @@ cp env.template .env
 
 Ces clés sont nécessaires pour utiliser le modèle fine-tuné via l’API OpenAI.
 
-## 🧪 Lancement de l'application
+## Lancement de l'application
 
 ```bash
 python chatbot.py
@@ -79,7 +103,7 @@ python chatbot.py
 
 Une interaction en console vous permettra de poser vos questions, et d’obtenir les réponses générées par le modèle.
 
-## 🧬 Fine-tuning (optionnel, si vous ne disposez pas encore d’un modèle)
+## Fine-tuning (optionnel, si vous ne disposez pas encore d’un modèle)
 
 Les scripts suivants peuvent être utilisés **une seule fois**, pour uploader vos données d’entraînement et générer un modèle personnalisé :
 
@@ -93,7 +117,7 @@ python train/finetuning.py
 
 👉 N'oubliez pas de mettre à jour `OPENAI_FILE_ID` et le nom du modèle dans vos appels.
 
-## 🧩 Structure du projet
+## Structure du projet
 
 ```
 chatbot-cgv/
@@ -113,7 +137,7 @@ chatbot-cgv/
 └── README.md
 ```
 
-# Diagramme de fonctionnement - chatbot.py
+# Diagramme de fonctionnement
 
 Ce diagramme est l'algorithme optimal visé, actuellement (PoC) les séquences de vérification en BDD et de gestion
 d'erreur sont ignorées (*), l'ensemble des Question/Réponse est toujours stocké en BDD même en cas de doublon ou d'erreur.
@@ -159,7 +183,7 @@ d'erreur sont ignorées (*), l'ensemble des Question/Réponse est toujours stock
 ```
 
 
-## 🐳 Base de données (SQLite via Docker)
+## Base de données
 
 Dans le dossier `/data`, exécutez :
 
@@ -173,7 +197,9 @@ Le fichier `script.sql` permet de créer et peupler initialement la base SQLite 
 
 ---
 
-## 🛡️ RGPD <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">[CNIL]</a>
+## RGPD
+
+<a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">[CNIL]</a>
 
 Dans la version PoC actuelle, des données sensibles utilisateurs entrées en prompt sont stockées en clair dans la BDD, sans consentement ni durée limitée. Avant la mise en production, des règles devront être suivies pour être en accord avec le RGPD :
 - information utilisateur et demande de consentement
@@ -182,7 +208,7 @@ Dans la version PoC actuelle, des données sensibles utilisateurs entrées en pr
 - accès sécurisé à la BDD
 - ... (le pré-traitement des prompts pourrait prendre en charge ces règles)
 
-## 🎓 Projet pédagogique
+## Projet pédagogique
 
 - Travail réalisé en binôme (<a href="https://github.com/go2375" target="_blank">
   <img src="https://avatars.githubusercontent.com/go2375" width="40" height="40" style="border-radius: 50%;" alt="Gosia" />
